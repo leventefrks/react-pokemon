@@ -1,6 +1,8 @@
 # React Custom Starter Pack
 
 - TailwindCSS
+- Axios
+- Twitter API
 
 ## Available Scripts
 

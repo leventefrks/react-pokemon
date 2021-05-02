@@ -1,8 +1,8 @@
-# React Custom Starter Pack
+# React Pokemon
 
 - TailwindCSS
 - Axios
-- Twitter API
+- Pokemon API
 
 ## Available Scripts
 

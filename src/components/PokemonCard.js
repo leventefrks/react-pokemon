@@ -20,7 +20,7 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <a
       href="#"
-      className="flex flex-col items-center justify-center bg-white rounded-md shadow-md py-4 text-xl text-center hover:shadow-xl hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
+      className="flex flex-col items-center justify-center space-y-4 bg-white rounded-md shadow-md py-4 text-xl text-center hover:shadow-xl hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
     >
       {currentPokemon.image ? (
         <img
@@ -34,7 +34,11 @@ const PokemonCard = ({ pokemon }) => {
       ) : (
         <div className="w-24 h-24 bg-gray-100 rounded-md" />
       )}
-      <h2 className="font-bold capitalize text-gray-600">{pokemon.name}</h2>
+      {currentPokemon.name ? (
+        <h2 className="font-bold capitalize text-gray-600">{pokemon.name}</h2>
+      ) : (
+        <div className="w-24 h-6 bg-gray-100" />
+      )}
     </a>
   );
 };

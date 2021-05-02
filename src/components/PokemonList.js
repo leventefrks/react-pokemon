@@ -1,6 +1,6 @@
 import PokemonCard from './PokemonCard';
 
-const PokemonList = ({ list }) =>
-  list.map(listItem => <PokemonCard key={listItem.name} list={listItem} />);
+const PokemonList = ({ pokemonList }) =>
+  pokemonList.map(pokemon => <PokemonCard key={pokemon.name} list={pokemon} />);
 
 export default PokemonList;

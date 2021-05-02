@@ -17,7 +17,10 @@ const PokemonCard = ({ list }) => {
     fetchCurrentPokemon();
   }, [list.url]);
   return (
-    <div className="flex flex-col items-center justify-center bg-white rounded-md shadow-md py-4 text-xl text-center hover:shadow-xl hover:scale-105 duration-200">
+    <a
+      href="#"
+      className="flex flex-col items-center justify-center bg-white rounded-md shadow-md py-4 text-xl text-center hover:shadow-xl hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
+    >
       <img
         src={currentPokemon.image}
         alt={currentPokemon.name}
@@ -25,7 +28,7 @@ const PokemonCard = ({ list }) => {
         decoding="async"
       />
       <h2 className="font-bold capitalize text-gray-600">{list.name}</h2>
-    </div>
+    </a>
   );
 };
 

@@ -14,7 +14,7 @@ function App() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(url);
+        const response = await axios(url);
         setPokemonList(response.data.results);
         setNextUrl(response.data.next);
         setPrevUrl(response.data.previous);

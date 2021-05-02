@@ -3,6 +3,7 @@
 - TailwindCSS
 - Axios
 - Pokemon API
+- React Icons
 
 ## Available Scripts
 

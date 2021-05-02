@@ -12,17 +12,19 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(url);
-      setPokemonList(response.data.results);
-      setNextUrl(response.data.next);
-      setPrevUrl(response.data.previous);
+      setLoading(true);
+      try {
+        const response = await axios.get(url);
+        setPokemonList(response.data.results);
+        setNextUrl(response.data.next);
+        setPrevUrl(response.data.previous);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-    setLoading(true);
-
     fetchData();
-
-    setLoading(false);
   }, [url]);
 
   const onClickNext = () => setUrl(nextUrl);
@@ -40,7 +42,7 @@ function App() {
         >
           Previous
         </button>
-        <h1 className="self-center">Pokemon</h1>
+        <h1 className="self-center text-3xl">Pokemon</h1>
         <button
           className={`px-4 py-2 text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
             nextUrl ? 'opacity-100' : 'opacity-0'

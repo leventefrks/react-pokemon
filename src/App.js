@@ -58,7 +58,7 @@ function App() {
           <FaChevronRight className="w-3 h-3 ml-2 fill-current" />
         </button>
       </nav>
-      <div className="min-h-screen space-y-4 md:space-y-0 md:grid gap-10 md:grid-cols-3 lg:grid-cols-4 grid-flow-row">
+      <div className="min-h-screen max-w-5xl mx-auto space-y-4 md:space-y-0 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row">
         {isLoading ? <Loader /> : <PokemonList pokemonList={pokemonList} />}
       </div>
     </div>

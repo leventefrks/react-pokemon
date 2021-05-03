@@ -5,20 +5,30 @@ const PokemonCard = ({ pokemon }) => {
   const [currentPokemon, setCurrentPokemon] = useState({});
 
   useEffect(() => {
+    const source = axios.CancelToken.source();
+
     const fetchCurrentPokemon = async () => {
-      const response = await axios(pokemon.url);
-      const { id, name, weight, height } = response.data;
-      const image = response.data.sprites.front_default;
-      setCurrentPokemon({
-        id,
-        name,
-        image,
-        weight,
-        height,
-      });
+      try {
+        const response = await axios(pokemon.url);
+        const { id, name, weight, height } = response.data;
+        const image = response.data.sprites.front_default;
+        setCurrentPokemon({
+          id,
+          name,
+          image,
+          weight,
+          height,
+        });
+      } catch (error) {
+        throw error;
+      }
     };
 
     fetchCurrentPokemon();
+
+    return () => {
+      source.cancel();
+    };
   }, [pokemon.url]);
 
   return (

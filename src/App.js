@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from './axios';
+import axios from 'axios';
 import { Loader } from './components/Loader';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import PokemonList from './components/PokemonList';
@@ -12,23 +12,27 @@ function App() {
   const [prevUrl, setPrevUrl] = useState();
 
   useEffect(() => {
+    const source = axios.CancelToken.source();
+
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(url);
+        const response = await axios.get(url, { cancelToken: source.token });
         setPokemonList(response.data.results);
         setNextUrl(response.data.next);
         setPrevUrl(response.data.previous);
-        setLoading(false);
       } catch (error) {
         console.log(error);
         throw error;
       }
+      setLoading(false);
     };
 
     fetchData();
 
-    return () => {};
+    return () => {
+      source.cancel();
+    };
   }, [url]);
 
   const onClickNext = () => setUrl(nextUrl);

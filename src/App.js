@@ -70,7 +70,7 @@ function App() {
 
   return (
     <div className="bg-gray-100 p-4 md:p-6">
-      <nav className="flex justify-between capitalize text-2xl text-center mb-6 font-bold">
+      <nav className="flex justify-between capitalize text-2xl text-center mb-10">
         <button
           className={`flex items-center justify-between px-2 md:px-4 md:py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
             prevUrl ? 'block' : 'hidden'
@@ -91,7 +91,7 @@ function App() {
           <FaChevronRight className="w-3 h-3 ml-2 fill-current" />
         </button>
       </nav>
-      <div className="min-h-screen max-w-5xl mx-auto space-y-4 md:space-y-0 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row">
+      <div className="min-h-screen max-w-5xl mx-auto space-y-4 md:space-y-0 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3 grid-flow-row">
         {isLoading ? (
           <Loader />
         ) : (

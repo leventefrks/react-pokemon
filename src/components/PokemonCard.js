@@ -7,12 +7,14 @@ const PokemonCard = ({ pokemon }) => {
   useEffect(() => {
     const fetchCurrentPokemon = async () => {
       const response = await axios(pokemon.url);
+      const { id, name, weight, height } = response.data;
+      const image = response.data.sprites.front_default;
       setCurrentPokemon({
-        id: response.data.id,
-        name: response.data.name,
-        image: response.data.sprites.front_default,
-        weight: response.data.weight,
-        height: response.data.height,
+        id,
+        name,
+        image,
+        weight,
+        height,
       });
     };
 

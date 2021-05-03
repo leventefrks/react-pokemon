@@ -6,7 +6,7 @@ export const PokemonType = ({ types }) => {
       {types.map(type => (
         <h5
           key={`${type.slot}-${type.name}`}
-          className={`uppercase text-xs font-bold ${GET_COLOR_TYPES.get(
+          className={`uppercase text-xxs text-white px-1 rounded-md ${GET_COLOR_TYPES.get(
             type.type.name
           )} `}
         >

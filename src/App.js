@@ -18,7 +18,7 @@ function App() {
       try {
         return await axios(url, { cancelToken: source.token });
       } catch (error) {
-        console.log(error);
+        throw error;
       }
     };
 
@@ -30,22 +30,24 @@ function App() {
         setPrevUrl(response.data.previous);
 
         const results = await Promise.all(
-          response.data.results.map(key => fetchItem(key.url))
+          (response.data.results || []).map(key => fetchItem(key.url))
         );
 
         const singleItem = results.map(result => {
+          const { id, name, weight, height, image } = result.data;
+          const image = result.data.sprites.front_default;
           return {
-            id: result.data.id,
-            name: result.data.name,
-            weight: result.data.weight,
-            height: result.data.height,
-            image: result.data.sprites.front_default,
+            id,
+            name,
+            weight,
+            height,
+            image,
           };
         });
 
         setPokemonList(singleItem);
       } catch (error) {
-        console.log(error);
+        throw error;
       }
       setLoading(false);
     };

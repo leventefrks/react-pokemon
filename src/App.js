@@ -67,20 +67,20 @@ function App() {
     <div className="App bg-gray-100 p-4 md:p-6">
       <nav className="flex justify-between capitalize text-2xl text-center mb-6 font-bold">
         <button
-          className={`flex items-center px-2 md:px-4 md:py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
-            prevUrl ? 'opacity-100' : 'opacity-0'
+          className={`flex items-center justify-between px-2 md:px-4 md:py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
+            prevUrl ? 'block' : 'hidden'
           }`}
           onClick={onClickPrevious}
         >
           <FaChevronLeft className="w-3 h-3 mr-2 fill-current" />
           Previous
         </button>
-        <h1 className="self-center text-lg md:text-3xl text-gray-600">
+        <h1 className="mx-auto text-lg md:text-3xl text-gray-600">
           Get your Pokemon
         </h1>
         <button
           className={`flex items-center px-2 md:px-4 md:py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
-            nextUrl ? 'opacity-100' : 'opacity-0'
+            nextUrl ? 'block' : 'hidden'
           }`}
           onClick={onClickNext}
         >

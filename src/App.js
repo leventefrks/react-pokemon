@@ -34,7 +34,7 @@ function App() {
         );
 
         const singleItem = results.map(result => {
-          const { id, name, weight, height } = result.data;
+          const { id, name, weight, height, types } = result.data;
           const image = result.data.sprites.front_default;
           return {
             id,
@@ -42,6 +42,7 @@ function App() {
             weight,
             height,
             image,
+            types,
           };
         });
 

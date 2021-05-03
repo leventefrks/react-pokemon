@@ -20,8 +20,9 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <a
       href="#"
-      className="flex flex-col items-center justify-center space-y-4 bg-white rounded-md shadow-md py-4 text-xl text-center hover:shadow-xl focus:shadow-xl hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
+      className="relative flex flex-col items-center justify-center space-y-4 bg-white rounded-md shadow-md py-4 text-xl text-center hover:shadow-xl focus:shadow-xl hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
     >
+      <h3 className="absolute z-0 text-gray-200 text-9xl font-extrabold">{`#${currentPokemon.id}`}</h3>
       {currentPokemon.image ? (
         <img
           src={currentPokemon.image}
@@ -30,6 +31,7 @@ const PokemonCard = ({ pokemon }) => {
           decoding="async"
           height="96"
           width="96"
+          className="relative z-20"
         />
       ) : (
         <div className="w-24 h-24 bg-gray-100 rounded-md" />

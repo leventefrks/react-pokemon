@@ -14,6 +14,7 @@ export const GET_COLOR_TYPES = new Map()
   .set('dark', 'bg-gray-500')
   .set('fighting', 'bg-yellow-500')
   .set('ground', 'bg-yellow-500')
-  .set('normal', 'bg-gray-500')
+  .set('normal', 'bg-gray-800')
   .set('rock', 'bg-blue-800')
+  .set('electric', 'bg-pink-700')
   .set('undefined', 'bg-gray-500');

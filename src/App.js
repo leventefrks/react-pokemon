@@ -10,6 +10,7 @@ function App() {
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=15');
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
+  const [selected, setSelectedItem] = useState();
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -60,6 +61,8 @@ function App() {
     };
   }, [url]);
 
+  const onSelected = id => setSelectedItem(id);
+
   const onClickNext = () => setUrl(nextUrl);
 
   const onClickPrevious = () => setUrl(prevUrl);
@@ -90,7 +93,11 @@ function App() {
         </button>
       </nav>
       <div className="min-h-screen max-w-5xl mx-auto space-y-4 md:space-y-0 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row">
-        {isLoading ? <Loader /> : <PokemonList pokemonList={pokemonList} />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <PokemonList pokemonList={pokemonList} onSelected={onSelected} />
+        )}
       </div>
     </div>
   );

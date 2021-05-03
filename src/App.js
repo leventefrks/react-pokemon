@@ -12,6 +12,8 @@ function App() {
   const [prevUrl, setPrevUrl] = useState();
 
   useEffect(() => {
+    let isCancelled = false;
+
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -27,6 +29,10 @@ function App() {
     };
 
     fetchData();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [url]);
 
   const onClickNext = () => setUrl(nextUrl);
@@ -45,7 +51,7 @@ function App() {
           <FaChevronLeft className="w-3 h-3 mr-2 fill-current" />
           Previous
         </button>
-        <h1 className="self-center text-3xl">Pokemon</h1>
+        <h1 className="self-center text-3xl text-gray-600">Get your Pokemon</h1>
         <button
           className={`flex items-center px-4 py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
             nextUrl ? 'opacity-100' : 'opacity-0'

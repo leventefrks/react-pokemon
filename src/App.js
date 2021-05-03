@@ -10,7 +10,7 @@ function App() {
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=15');
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
-  const [selected, setSelectedItem] = useState();
+  const [, setSelectedItem] = useState();
 
   useEffect(() => {
     const source = axios.CancelToken.source();

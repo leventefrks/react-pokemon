@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Loader } from './components/Loader';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import PokemonList from './components/PokemonList';
+import { AppTitle } from './components/AppTitle';
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -79,9 +80,7 @@ function App() {
           <FaChevronLeft className="w-3 h-3 mr-2 fill-current" />
           Previous
         </button>
-        <h1 className="mx-auto text-lg md:text-3xl text-gray-600">
-          Get your Pokemon
-        </h1>
+        <AppTitle />
         <button
           className={`flex items-center px-2 md:px-4 md:py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
             nextUrl ? 'block' : 'hidden'

@@ -11,6 +11,8 @@ const PokemonCard = ({ pokemon }) => {
         id: response.data.id,
         name: response.data.name,
         image: response.data.sprites.front_default,
+        weight: response.data.weight,
+        height: response.data.height,
       });
     };
 
@@ -18,13 +20,16 @@ const PokemonCard = ({ pokemon }) => {
   }, [pokemon.url]);
 
   return (
-    <a
-      href="#"
-      className="relative flex flex-col items-center justify-center space-y-4 bg-white rounded-md shadow-md py-4 text-xl text-center hover:shadow-xl focus:shadow-xl hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
-    >
+    <button className="relative flex flex-col items-center justify-center space-y-4 bg-white rounded-xl shadow-md py-4 text-xl text-center hover:shadow-xl focus:shadow-xl hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">
       {currentPokemon.id && (
         <h3 className="absolute z-0 text-gray-200 text-7xl font-extrabold">{`#${currentPokemon.id}`}</h3>
       )}
+      <div className="absolute -top-6 -right-4 w-14 h-14 shadow-md rounded-full text-xs font-bold text-gray-600 bg-white flex items-center justify-center">
+        {currentPokemon.weight && `${currentPokemon.weight}kg`}
+      </div>
+      <div className="absolute -top-6 -left-4 w-14 h-14 shadow-md rounded-full text-xs font-bold text-gray-600 bg-white flex items-center justify-center">
+        {currentPokemon.height && `${currentPokemon.height}m`}
+      </div>
       {currentPokemon.image ? (
         <img
           src={currentPokemon.image}
@@ -43,7 +48,7 @@ const PokemonCard = ({ pokemon }) => {
       ) : (
         <div className="w-24 h-6 bg-gray-100" />
       )}
-    </a>
+    </button>
   );
 };
 

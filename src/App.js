@@ -14,16 +14,38 @@ function App() {
   useEffect(() => {
     const source = axios.CancelToken.source();
 
-    const fetchData = async () => {
-      setLoading(true);
+    const fetchItem = async url => {
       try {
-        const response = await axios.get(url, { cancelToken: source.token });
-        setPokemonList(response.data.results);
-        setNextUrl(response.data.next);
-        setPrevUrl(response.data.previous);
+        return await axios(url, { cancelToken: source.token });
       } catch (error) {
         console.log(error);
-        throw error;
+      }
+    };
+
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios(url, { cancelToken: source.token });
+        setNextUrl(response.data.next);
+        setPrevUrl(response.data.previous);
+
+        const results = await Promise.all(
+          response.data.results.map(key => fetchItem(key.url))
+        );
+
+        const singleItem = results.map(result => {
+          return {
+            id: result.data.id,
+            name: result.data.name,
+            weight: result.data.weight,
+            height: result.data.height,
+            image: result.data.sprites.front_default,
+          };
+        });
+
+        setPokemonList(singleItem);
+      } catch (error) {
+        console.log(error);
       }
       setLoading(false);
     };

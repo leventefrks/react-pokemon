@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Loader } from './components/Loader';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import Modal from './components/Modal';
 import PokemonList from './components/PokemonList';
 import { AppTitle } from './components/AppTitle';
 
@@ -11,7 +12,8 @@ function App() {
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=15');
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
-  const [, setSelectedItem] = useState();
+  const [selectedItem, setSelectedItem] = useState();
+  const [isModalVisible, setModalVisibility] = useState(false);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -62,14 +64,29 @@ function App() {
     };
   }, [url]);
 
-  const onSelected = id => setSelectedItem(id);
+  const onSelected = id => {
+    setModalVisibility(true);
+    setSelectedItem(id);
+  };
+
+  const onHideModal = e => {
+    e.stopPropagation();
+    if (e.target === e.currentTarget) {
+      setSelectedItem(null);
+      setModalVisibility(false);
+    }
+  };
 
   const onClickNext = () => setUrl(nextUrl);
 
   const onClickPrevious = () => setUrl(prevUrl);
 
   return (
-    <div className="bg-gray-100 p-4 md:p-6">
+    <div
+      className={`bg-gray-100 p-4 md:p-6 w-full min-h-screen ${
+        selectedItem ? 'fixed' : 'relative'
+      }`}
+    >
       <nav className="flex justify-between capitalize text-2xl text-center mb-10">
         <button
           className={`flex items-center justify-between px-2 md:px-4 md:py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
@@ -98,6 +115,9 @@ function App() {
           <PokemonList pokemonList={pokemonList} onSelected={onSelected} />
         )}
       </div>
+      {isModalVisible && (
+        <Modal isVisible={isModalVisible} onHideModal={onHideModal} />
+      )}
     </div>
   );
 }

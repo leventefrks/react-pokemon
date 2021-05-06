@@ -1,7 +1,6 @@
 import { PokemonImage } from './PokemonImage';
 import { Badge } from './Badge';
 import { CardTitle } from './CardTitle';
-import { CardId } from './CardId';
 import { PokemonType } from './PokemonType';
 import ReactPlaceholder from 'react-placeholder';
 import 'react-placeholder/lib/reactPlaceholder.css';
@@ -36,7 +35,7 @@ const PokemonCard = ({ pokemon, onSelected, isLoading }) => {
         ready={isReady(isLoading)}
         showLoadingAnimation={true}
         rows={1}
-        style={{ width: 120, marginTop: '10px' }}
+        style={{ width: 120, height: '30px', marginTop: '10px' }}
       >
         <PokemonType types={pokemon.types} />
       </ReactPlaceholder>

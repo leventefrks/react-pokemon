@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Loader } from './components/Loader';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Modal from './components/Modal';
 import PokemonList from './components/PokemonList';

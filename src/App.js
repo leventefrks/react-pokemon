@@ -69,12 +69,9 @@ function App() {
     setSelectedItem(id);
   };
 
-  const onHideModal = e => {
-    e.stopPropagation();
-    if (e.target === e.currentTarget) {
-      setSelectedItem(null);
-      setModalVisibility(false);
-    }
+  const onHideModal = () => {
+    setSelectedItem(null);
+    setModalVisibility(false);
   };
 
   const onClickNext = () => setUrl(nextUrl);
@@ -115,7 +112,7 @@ function App() {
           <PokemonList pokemonList={pokemonList} onSelected={onSelected} />
         )}
       </div>
-      {isModalVisible && (
+      {selectedItem && (
         <Modal isVisible={isModalVisible} onHideModal={onHideModal} />
       )}
     </div>

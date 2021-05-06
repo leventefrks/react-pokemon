@@ -6,12 +6,12 @@ const Modal = ({ isVisible, onHideModal }) => {
 
   return createPortal(
     <div
-      className="fixed z-50 min-h-screen w-full flex items-center justify-center bg-gray-600 bg-opacity-50"
+      className="fixed z-50 w-full min-h-screen flex items-center justify-center bg-gray-600 bg-opacity-50"
       role="dialog"
       onClick={onHideModal}
     >
       <div
-        className="w-4/12 h-96 rounded-xl shadow-2xl p-4 bg-white"
+        className="w-full md:w-4/12 mx-4 md:mx-0 h-96 rounded-xl shadow-2xl p-4 bg-white"
         onClick={e => e.stopPropagation()}
       >
         <div className="relative bg-white">

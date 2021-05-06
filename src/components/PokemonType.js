@@ -2,7 +2,7 @@ import { GET_COLOR_TYPES } from './../constants';
 
 export const PokemonType = ({ types }) => {
   return (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-3 mt-2">
       {types.map(type => (
         <h5
           key={`${type.slot}-${type.name}`}

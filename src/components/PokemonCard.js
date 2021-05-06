@@ -26,7 +26,7 @@ const PokemonCard = ({ pokemon, onSelected, isLoading }) => {
         ready={isReady(isLoading)}
         showLoadingAnimation={true}
         rows={1}
-        style={{ width: 80, marginTop: '10px' }}
+        style={{ width: 80, height: 28, marginTop: '8px' }}
       >
         <CardTitle name={pokemon.name} />
       </ReactPlaceholder>
@@ -35,7 +35,7 @@ const PokemonCard = ({ pokemon, onSelected, isLoading }) => {
         ready={isReady(isLoading)}
         showLoadingAnimation={true}
         rows={1}
-        style={{ width: 120, height: '30px', marginTop: '10px' }}
+        style={{ width: 120, height: 28, marginTop: '8px' }}
       >
         <PokemonType types={pokemon.types} />
       </ReactPlaceholder>

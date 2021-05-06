@@ -10,9 +10,9 @@ function App() {
   const [pokemonList, setPokemonList] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=15');
-  const [nextUrl, setNextUrl] = useState();
-  const [prevUrl, setPrevUrl] = useState();
-  const [selectedItem, setSelectedItem] = useState();
+  const [nextUrl, setNextUrl] = useState(null);
+  const [prevUrl, setPrevUrl] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [isModalVisible, setModalVisibility] = useState(false);
 
   useEffect(() => {
@@ -27,8 +27,8 @@ function App() {
     };
 
     const fetchData = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const response = await axios(url, { cancelToken: source.token });
         setNextUrl(response.data.next);
         setPrevUrl(response.data.previous);
@@ -106,11 +106,11 @@ function App() {
         </button>
       </nav>
       <div className="min-h-screen max-w-5xl mx-auto space-y-4 md:space-y-0 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3 grid-flow-row">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <PokemonList pokemonList={pokemonList} onSelected={onSelected} />
-        )}
+        <PokemonList
+          pokemonList={pokemonList}
+          onSelected={onSelected}
+          isLoading={isLoading}
+        />
       </div>
       {selectedItem && (
         <Modal isVisible={isModalVisible} onHideModal={onHideModal} />

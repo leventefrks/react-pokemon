@@ -1,3 +1,3 @@
 export const CardTitle = ({ name }) => (
-  <h4 className="font-bold capitalize text-gray-600">{name}</h4>
+  <h3 className="font-bold capitalize text-gray-600">{name}</h3>
 );

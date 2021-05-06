@@ -7,6 +7,8 @@ import ReactPlaceholder from 'react-placeholder';
 import 'react-placeholder/lib/reactPlaceholder.css';
 
 const PokemonCard = ({ pokemon, onSelected, isLoading }) => {
+  const isReady = isLoading => (!isLoading ? true : false);
+
   return (
     <button onClick={() => onSelected(pokemon.id)} className="card-btn">
       {/* <CardId id={`#${pokemon.id}`} /> */}
@@ -14,15 +16,30 @@ const PokemonCard = ({ pokemon, onSelected, isLoading }) => {
       <Badge text={`${pokemon.height}m`} />
       <ReactPlaceholder
         type="round"
-        ready={!isLoading ? true : false}
+        ready={isReady(isLoading)}
         showLoadingAnimation={true}
-        color="#E0E0E0"
         style={{ width: 96, height: 96 }}
       >
         <PokemonImage name={pokemon.name} image={pokemon.image} />
       </ReactPlaceholder>
-      <CardTitle name={pokemon.name} />
-      <PokemonType types={pokemon.types} />
+      <ReactPlaceholder
+        type="text"
+        ready={isReady(isLoading)}
+        showLoadingAnimation={true}
+        rows={1}
+        style={{ width: 80, marginTop: '1px' }}
+      >
+        <CardTitle name={pokemon.name} />
+      </ReactPlaceholder>
+      <ReactPlaceholder
+        type="text"
+        ready={isReady(isLoading)}
+        showLoadingAnimation={true}
+        rows={1}
+        style={{ width: 120, marginTop: '10px' }}
+      >
+        <PokemonType types={pokemon.types} />
+      </ReactPlaceholder>
     </button>
   );
 };

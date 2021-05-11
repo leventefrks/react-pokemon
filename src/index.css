@@ -10,8 +10,12 @@
   @apply flex items-center px-2 md:px-4 md:py-2 text-sm font-semibold text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50;
 }
 
+.search-input {
+  @apply w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring focus:ring-purple-100 focus:border-purple-600;
+}
+
 .card-btn {
-  @apply relative flex flex-col items-center justify-between rounded-xl bg-white shadow-md py-4 text-xl hover:shadow-xl focus:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400;
+  @apply relative flex flex-col h-full max-h-52 items-center justify-between rounded-xl bg-white shadow-md py-4 text-xl hover:shadow-xl focus:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400;
 }
 
 .card-id {

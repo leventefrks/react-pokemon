@@ -11,7 +11,7 @@
 }
 
 .search-input {
-  @apply w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring focus:ring-purple-100 focus:border-purple-600;
+  @apply w-full md:w-72 px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring focus:ring-purple-100 focus:border-purple-600;
 }
 
 .card-btn {

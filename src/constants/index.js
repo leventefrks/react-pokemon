@@ -18,3 +18,8 @@ export const GET_COLOR_TYPES = new Map()
   .set('rock', 'bg-blue-800')
   .set('electric', 'bg-pink-700')
   .set('undefined', 'bg-gray-500');
+
+const POKEMON_ERROR_MESSAGE = 'Not Found';
+const CUSTOM_ERROR_MESSAGE = 'There is no such Pokemon...';
+
+export const ERROR = new Map().set(POKEMON_ERROR_MESSAGE, CUSTOM_ERROR_MESSAGE);

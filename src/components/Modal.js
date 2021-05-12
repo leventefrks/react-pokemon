@@ -17,7 +17,7 @@ const Modal = ({ isVisible, onHideModal }) => {
         <div className="relative bg-white">
           <button aria-label="Close Modal">
             <HiX
-              className="absolute -top-4 -right-4 w-6 h-6 m-5 cursor-pointer text-indigo-600 hover:animate-spin"
+              className="absolute -top-4 -right-4 w-8 h-8 m-5 cursor-pointer text-indigo-600 rounded-full hover:bg-indigo-100 p-2"
               onClick={onHideModal}
             />
           </button>

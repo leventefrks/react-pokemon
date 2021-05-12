@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { ERROR } from './constants';
 import Modal from './components/Modal';
+import NotFound from './components/NotFound';
 import PokemonList from './components/PokemonList';
+import { ENTER_KEY, NA } from './constants';
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -76,27 +77,32 @@ function App() {
     setModalVisibility(false);
   };
 
-  const onClickNext = () => setUrl(nextUrl);
+  const onClickNext = () => {
+    setError('');
+    setUrl(nextUrl);
+  };
 
-  const onClickPrevious = () => setUrl(prevUrl);
+  const onClickPrevious = () => {
+    setError('');
+    setUrl(prevUrl);
+  };
 
-  const onFetchData = async () => {
-    if (!query) return;
+  const onFetchSingleData = async () => {
     setLoading(true);
     setError('');
 
     try {
       const response = await axios(
-        `https://pokeapi.co/api/v2/pokemon/${query}`
+        `https://pokeapi.co/api/v2/pokemon/${query.toLocaleLowerCase()}`
       );
 
       setNextUrl('https://pokeapi.co/api/v2/pokemon?offset=30');
 
       const {
-        id = 'n/a',
-        name = 'n/a',
-        weight = 'n/a',
-        height = 'n/a',
+        id = NA,
+        name = NA,
+        weight = NA,
+        height = NA,
         types = [],
       } = response.data;
 
@@ -112,7 +118,6 @@ function App() {
 
       setPokemonList([singleItem]);
     } catch (error) {
-      console.log(error);
       setError(error.response.data);
     } finally {
       setLoading(false);
@@ -122,8 +127,8 @@ function App() {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (e.key !== 'Enter') return;
-    onFetchData();
+    if (e.key !== ENTER_KEY || !query) return;
+    onFetchSingleData();
   };
 
   return (
@@ -142,7 +147,6 @@ function App() {
           <FaChevronLeft className="w-3 h-3 mr-2 fill-current" />
           Previous
         </button>
-        {/* <AppTitle /> */}
         <button
           className={`flex items-center px-2 md:px-4 md:py-2 text-sm font-semibold text-purple-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 ${
             nextUrl ? 'block' : 'hidden'
@@ -169,16 +173,14 @@ function App() {
           />
           <button
             className="bg-purple-500 hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 px-3 py-2 text-white rounded-md"
-            onClick={onFetchData}
+            onClick={onFetchSingleData}
           >
             Search
           </button>
         </form>
       </div>
       {error ? (
-        <h2 className="text-lg text-center text-purple-600">
-          {ERROR.get(error)}
-        </h2>
+        <NotFound error={error} />
       ) : (
         <div className="min-h-screen max-w-5xl mx-auto space-y-4 md:space-y-0 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3 auto-rows-auto">
           <PokemonList

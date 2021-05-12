@@ -23,3 +23,7 @@ const POKEMON_ERROR_MESSAGE = 'Not Found';
 const CUSTOM_ERROR_MESSAGE = 'There is no such Pokemon...';
 
 export const ERROR = new Map().set(POKEMON_ERROR_MESSAGE, CUSTOM_ERROR_MESSAGE);
+
+export const NA = 'n/a';
+
+export const ENTER_KEY = 'Enter';

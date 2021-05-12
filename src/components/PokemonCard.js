@@ -11,8 +11,8 @@ const PokemonCard = ({ pokemon, onSelected, isLoading }) => {
   return (
     <button onClick={() => onSelected(pokemon.id)} className="card-btn">
       {/* <CardId id={`#${pokemon.id}`} /> */}
-      <Badge text={`${pokemon.weight}kg`} left="true" />
-      <Badge text={`${pokemon.height}m`} />
+      <Badge text={`${pokemon.weight}kg`} left="true" isLoading={isLoading} />
+      <Badge text={`${pokemon.height}m`} isLoading={isLoading} />
       <ReactPlaceholder
         type="round"
         ready={isReady(isLoading)}

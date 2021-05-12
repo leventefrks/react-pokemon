@@ -88,6 +88,7 @@ function App() {
   };
 
   const onFetchSingleData = async () => {
+    if (!query) return;
     setLoading(true);
     setError('');
 
@@ -127,7 +128,7 @@ function App() {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (e.key !== ENTER_KEY || !query) return;
+    if (e.key !== ENTER_KEY) return;
     onFetchSingleData();
   };
 
